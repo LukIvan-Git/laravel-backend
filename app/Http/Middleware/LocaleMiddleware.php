@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
-
+use Illuminate\Support\Facades\URL;
 class LocaleMiddleware
 {
     /**
@@ -26,7 +26,7 @@ class LocaleMiddleware
         
         // Set application locale
         App::setLocale($locale);
-        
+        URL::defaults(['locale' => $locale]);
         return $next($request);
     }
     

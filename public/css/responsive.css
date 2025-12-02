@@ -1,0 +1,6 @@
+
+@media (max-width: 1024px) {
+    .banner-grid {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+}
