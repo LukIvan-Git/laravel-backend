@@ -3,6 +3,9 @@
     --secondary-color : #0059b3;
     --hover-color : #3399ff;
 }
+img {
+    max-width: 100%;
+}
 .primary-color {
     color: var(--primary-color) !important;
 }
@@ -19,6 +22,7 @@ body {
     margin: 0;
     line-height: normal;
     background: #fff;
+    font-size: 1.5rem;
 }
 
 a{
@@ -51,7 +55,9 @@ a:hover{
     min-height: 100vh;
     position: relative;
 }
-
+#skills-section {
+    background-color: rgb(249 250 251 / 50%);
+}
 .bg-overlay {
     position: absolute;
     top: 0;
@@ -78,4 +84,37 @@ a:hover{
 .banner-grid {
     gap: 4rem;
     grid-template-columns: repeat(2, minmax(0,1fr));
+}
+.heading{
+    font-size: 0.75rem;
+    padding: 5px 15px;
+    background-color: rgb(172, 198, 235);
+    color: white;
+}
+.description{
+    font-size: 1rem;
+    color: #333333;
+}
+.description .list{
+    font-size: 0.75rem;
+    margin-top : 4px;
+    display:flex;
+    justify-content: space-between;
+}
+.rate .filled{
+    color : #ffcc00;
+}
+.skill-img{
+    width : 80px;
+    height : 80px; 
+    aspect-ratio: 1 / 1;
+}
+.skill-box{
+    display :flex;
+    flex-direction : column;
+    align-items : center;
+    text-align : center;
+    padding : 2rem 2.5rem;
+    background-color: #fff;
+    height: 100%;
 }
