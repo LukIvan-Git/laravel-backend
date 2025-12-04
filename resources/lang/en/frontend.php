@@ -21,4 +21,6 @@ return [
     'cms'=>'CMS',
     'smtp'=>'SMTP',
     'bootstrap'=>'Bootstrap',
+    'my_career'=>'My Career',
+    'contact_me'=>'Contact Me',
 ];

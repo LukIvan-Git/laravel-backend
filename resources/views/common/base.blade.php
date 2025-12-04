@@ -27,14 +27,13 @@
     <script src="https://www.google.com/recaptcha/api.js?render={{env('GOOGLE_RECAPTCHA_SITE_KEY')}}"></script>
 
     @stack('js-header')
+    @stack('css-header')
 </head>
 <body id="body">
 @include('common.header')
 
 @yield('content')
 
-{{-- @include('common.footer') --}}
-<script>
-
-
-</script>
+@include('common.footer')
+</body>
+</html>

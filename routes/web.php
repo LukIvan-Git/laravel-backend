@@ -21,4 +21,13 @@ Route::prefix('{locale}')->middleware('locale')->group(function () {
     Route::get('/home', function () {
         return view('welcome');
     })->name('home');
+
+    Route::get('/my-career', function () {
+        return view('my_career');
+    })->name('my_career');
+
+    Route::get('/contact-me', function () {
+        return view('contact_me');
+    })->name('contact_me');
+    
 });
