@@ -7,8 +7,7 @@
                 <div class="d-grid banner-grid align-items-center">
                     <div class="text-left">
                        <span style="color:#4da6ff"><h1>@lang('frontend.greetings')</h1></span>
-                       <p>@lang('frontend.greetings_2')</p>
-                       <p>@lang('frontend.greetings_3')</p>
+                        <p>{!! $page->translated_data['content'] !!}
                     </h1>
                 </div>
             </div>

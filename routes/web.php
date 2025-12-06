@@ -12,19 +12,18 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+use App\Http\Controllers\Frontend\HomepageController;
 
 Route::get('/', function () {
-    return redirect()->route('home', app()->getLocale());
+    return redirect()->route('homepage', app()->getLocale());
 });
 
 Route::prefix('{locale}')->middleware('locale')->group(function () {
-    Route::get('/home', function () {
-        return view('welcome');
-    })->name('home');
+    Route::get('/homepage', [HomepageController::class, 'index'])->name('homepage');
 
-    Route::get('/my-career', function () {
-        return view('my_career');
-    })->name('my_career');
+    Route::get('/my-careers', function () {
+        return view('my_careers');
+    })->name('my_careers');
 
     Route::get('/contact-me', function () {
         return view('contact_me');
