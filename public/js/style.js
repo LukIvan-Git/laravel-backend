@@ -8,8 +8,9 @@ $(document).ready(function () {
         let btn = $(this);
         let target = btn.closest('form');
         btn.prop('disabled', true);
-        $('#send-icon').hide();
-        $('#send-check-icon').show();
+        btn.addClass('loading');
+        $('#send-icon').addClass('loading').hide();
+        $('#send-check-icon').addClass('loading').show();
         target.submit();
     });
 });

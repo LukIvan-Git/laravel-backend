@@ -155,6 +155,9 @@ a:hover{
     left: 12px;
     cursor: pointer;
 }
+.custom-label.loading {
+    cursor: not-allowed;
+}
 .custom-label.for-btn {
     font-size: 20px;
     top: 8px;
@@ -187,4 +190,7 @@ a:hover{
 }
 #send-check-icon {
     display : none;
+}
+#submit-btn.loading {
+    cursor: not-allowed;
 }
