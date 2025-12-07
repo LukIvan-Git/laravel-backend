@@ -153,11 +153,12 @@ a:hover{
     position: absolute;
     top: 4px;
     left: 12px;
+    cursor: pointer;
 }
 .custom-label.for-btn {
     font-size: 20px;
     top: 8px;
-    left: calc(50% - 30px);
+    left: calc(50% - 36px);
 }
 .custom-textarea {
     background-color: #EEEEEE;
@@ -177,6 +178,13 @@ a:hover{
     border-radius: 5px;
     border: none;
     outline: none;
-    padding: 0.75rem 1rem 0.75rem 45px;
+    padding: 0.75rem 2rem 0.75rem 50px;
     background: linear-gradient(to right, #4da6ff, #487aad);
+}
+
+#send-icon {
+    display : block;
+}
+#send-check-icon {
+    display : none;
 }

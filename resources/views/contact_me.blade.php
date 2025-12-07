@@ -11,7 +11,7 @@
                 </div>
                 <div class="col-12 order-0 order-lg-1 col-lg-6">
                     <p>@lang('frontend.contactme')</p>
-                    <form action="" method="POST" id="contactform">
+                    <form action="{{ route('contact_me') }}" method="POST" id="contactform">
                         @csrf
                         <div class="position-relative mb-3">
                             <label for="name" class="custom-label">
@@ -32,13 +32,29 @@
                             <textarea class="custom-textarea" id="message" name="message" placeholder="@lang('frontend.message')" required></textarea>
                         </div>
                         <div class="position-relative mb-3 text-center text-white">
-                            <label class="custom-label for-btn">
+                            <label id="send-icon" class="custom-label for-btn">
                                 <i class="bi bi-send"></i>
                             </label>
-                            <button type="submit" class="custom-button">@lang('frontend.send_message')</button>   
+                            <label  id="send-check-icon" class="custom-label for-btn">
+                                <i class="bi bi-send-check"></i>
+                            </label>
+                            <button id="submit-btn" class="custom-button">@lang('frontend.send_message')</button>   
                         </div>
-                        
                     </form>
+                    @if(session('success'))
+                        <div class="alert alert-success mt-2">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                    @if($errors->any())
+                        <div class="alert alert-danger mt-2">
+                            <ul class="mb-0">
+                                @foreach($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
             </div>
         </div>
 </main>

@@ -27,4 +27,10 @@ return [
     'email'=>'Email',
     'message'=>'Message',
     'send_message'=>'Send',
+    'name_max'=>'Name may not be greater than 255 characters.',
+    'email_max'=>'Email may not be greater than 255 characters.',
+    'message_max'=>'Message may not be greater than 500 characters.',
+    'error_sending_message'=>'Error sending message. Please try again later.',
+    'message_sent_successfully'=>'Message sent successfully!',
+    'loading'=>'Loading...',
 ];
