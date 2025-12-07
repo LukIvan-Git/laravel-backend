@@ -22,5 +22,9 @@ return [
     'smtp'=>'SMTP',
     'bootstrap'=>'Bootstrap',
     'my_career'=>'My Career',
-    'contact_me'=>'Contact Me',
+    'contactme'=>'Contact Me',
+    'name'=>'Name',
+    'email'=>'Email',
+    'message'=>'Message',
+    'send_message'=>'Send',
 ];
