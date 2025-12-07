@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-12 order-1 order-lg-0 col-lg-6">
-                    <div class="image-container 1/1">
+                    <div class="image-container onebyone text-center">
                         <img src="{{ asset('images/contact-me.png') }}" alt="Contact Me" class="">
                     </div>
                 </div>
