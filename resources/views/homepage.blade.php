@@ -19,145 +19,32 @@
             <div class="d-inline-block heading my-2">@lang('frontend.skills_heading')</div>
             <div class="description mb-2 mb-lg-4">@lang('frontend.skills_description')</div>
             <div class="row">
-                <div class="col-12 col-md-6 col-xl-3 mb-4">
+                @foreach ($tech_items as $ti)
+                    <div class="col-12 col-md-6 col-xl-3 mb-4">
                     <div class="skill-box">
                         <div class="mb-3">
-                            <img class="skill-img" src="{{ asset('images/html.png') }}" alt="Skill 1">
+                            <img class="skill-img" src="{{ asset('images/' . $ti->icon_path) }}" alt="Skill 1">
                         </div>
-                        <h5>@lang('frontend.frontend')</h5>
+                        <h5>{{ $ti->name }}</h5>
                         <div class="description w-100">
-                            <div class="list">
-                                <span>@lang('frontend.javascript')</span>
+                            @foreach ($ti['details'] as $ds)
+                                <div class="list">
+                                <span>{{ $ds['name'] }}</span>
                                 <div class="rate">
-                                    <span class="filled">&#9733;</span>
-                                    <span class="filled">&#9733;</span>
-                                    <span class="filled">&#9733;</span>
-                                    <span class="filled">&#9733;</span>
-                                    <span class="filled">&#9733;</span>
+                                        @for ($i = 1; $i <= 5; $i++)
+                                            @if ($i <= $ds['proficiency'])
+                                                <span class="filled">&#9733;</span>
+                                            @else
+                                                <span class="empty">&#9733;</span>
+                                            @endif
+                                        @endfor
                                 </div>
                             </div>
-                            <div class="list">
-                                <span>@lang('frontend.css')</span>
-                                <div class="rate">
-                                    <span class="filled">&#9733;</span>
-                                    <span class="filled">&#9733;</span>
-                                    <span class="filled">&#9733;</span>
-                                    <span class="filled">&#9733;</span>
-                                    <span class="">&#9733;</span>
-                                </div>
-                            </div>
-                            <div class="list">
-                                <span>@lang('frontend.bootstrap')</span>
-                                <div class="rate">
-                                    <span class="filled">&#9733;</span>
-                                    <span class="filled">&#9733;</span>
-                                    <span class="filled">&#9733;</span>
-                                    <span class="filled">&#9733;</span>
-                                    <span class="filled">&#9733;</span>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-6 col-xl-3 mb-4">
-                    <div class="skill-box">
-                        <div class="mb-3">
-                            <img class="skill-img" src="{{ asset('images/vue.jpg') }}" alt="Skill 2">
-                        </div>
-                        <h5>@lang('frontend.vuejs')</h5>
-                        <div class="description w-100">
-                            <div class="list">
-                                <span>Vue 2</span>
-                                <div class="rate">
-                                    <span class="filled">&#9733;</span>
-                                    <span class="filled">&#9733;</span>
-                                    <span class="filled">&#9733;</span>
-                                    <span class="filled">&#9733;</span>
-                                    <span class="filled">&#9733;</span>
-                                </div>
-                            </div>
-                            <div class="list">
-                                <span>Vue 3</span>
-                                <div class="rate">
-                                    <span class="filled">&#9733;</span>
-                                    <span class="filled">&#9733;</span>
-                                    <span class="filled">&#9733;</span>
-                                    <span class="">&#9733;</span>
-                                    <span class="">&#9733;</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-xl-3 mb-4">
-                    <div class="skill-box">
-                        <div class="mb-3">
-                            <img class="skill-img" src="{{ asset('images/laravel.png') }}" alt="Skill 3">
-                        </div>
-                        <h5>@lang('frontend.laravel')</h5>
-                        <div class="description w-100">
-                        <div class="list">
-                                <span>@lang('frontend.eloquent_orm')</span>
-                                <div class="rate">
-                                    <span class="filled">&#9733;</span>
-                                    <span class="filled">&#9733;</span>
-                                    <span class="filled">&#9733;</span>
-                                    <span class="">&#9733;</span>
-                                    <span class="">&#9733;</span>
-                                </div>
-                        </div>
-                        <div class="list">
-                                <span>@lang('frontend.database_management')</span>
-                                <div class="rate">
-                                    <span class="filled">&#9733;</span>
-                                    <span class="filled">&#9733;</span>
-                                    <span class="filled">&#9733;</span>
-                                    <span class="filled">&#9733;</span>
-                                    <span class="">&#9733;</span>
-                                </div>
-                        </div>
-                        <div class="list">
-                                <span>@lang('frontend.cms')</span>
-                                <div class="rate">
-                                    <span class="filled">&#9733;</span>
-                                    <span class="filled">&#9733;</span>
-                                    <span class="filled">&#9733;</span>
-                                    <span class="filled">&#9733;</span>
-                                    <span class="">&#9733;</span>
-                                </div>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-xl-3 mb-4">
-                    <div class="skill-box">
-                        <div class="mb-3">
-                            <img class="skill-img" src="{{ asset('images/api.png') }}" alt="Skill 4">
-                        </div>
-                        <h5>@lang('frontend.api')</h5>
-                        <div class="description w-100">
-                        <div class="list">
-                                <span>@lang('frontend.payment_gateway')</span>
-                                <div class="rate">
-                                    <span class="filled">&#9733;</span>
-                                    <span class="filled">&#9733;</span>
-                                    <span class="filled">&#9733;</span>
-                                    <span class="filled">&#9733;</span>
-                                    <span class="">&#9733;</span>
-                                </div>
-                        </div>
-                        <div class="list">
-                                <span>@lang('frontend.smtp')</span>
-                                <div class="rate">
-                                    <span class="filled">&#9733;</span>
-                                    <span class="filled">&#9733;</span>
-                                    <span class="filled">&#9733;</span>
-                                    <span class="filled">&#9733;</span>
-                                    <span class="">&#9733;</span>
-                                </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
 

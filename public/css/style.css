@@ -44,10 +44,6 @@ a:hover{
     height: 80px;
 }
 
-.nav-logo {
-    cursor: pointer;
-}
-
 #welcome-section {
     background-repeat: no-repeat;
     background-size: cover;
