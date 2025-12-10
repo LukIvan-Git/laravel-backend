@@ -48,7 +48,7 @@
 #nav-toggle {
     color: var(--primary-color);
     position: absolute;
-    top: -15px;
+    top: 2px;
     right: 0;
     font-size: 3.7rem;
     cursor: pointer;

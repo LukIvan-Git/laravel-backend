@@ -3,9 +3,9 @@ $(document).ready(function () {
         $('.re-menu').toggleClass('open');
     });
 
-    $('#submit-btn').click(function (e) {
+    $('#btn-wrapper').click(function (e) {
         e.preventDefault();
-        let btn = $(this);
+        let btn = $(this).children('#submit-btn');
         let target = btn.closest('form');
         btn.prop('disabled', true);
         btn.addClass('loading');

@@ -6,7 +6,7 @@
     <link rel="icon" type="image/x-icon" href="{{asset('images/favicon.ico')}}">
     <meta name="keywords" content="Resume CV Portfolio">
     <meta name="description" content="Resume CV Portfolio">
-    <title>My Page</title>
+    @stack('page-title')
     <!-- css -->
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
@@ -24,7 +24,7 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
 
-    <script src="https://www.google.com/recaptcha/api.js?render={{env('GOOGLE_RECAPTCHA_SITE_KEY')}}"></script>
+    <script src="https://www.google.com/recaptcha/enterprise.js?render={{env('GOOGLE_RECAPTCHA_SITE_KEY')}}"></script>
 
     @vite(['resources/css/app.css'])
 

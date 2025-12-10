@@ -1,4 +1,7 @@
 @extends('common.base')
+@push('page-title')
+    <title>Homepage</title>
+@endpush
 @section('content')
 <main>
     <section id="welcome-section" class="d-flex align-items-center" style="background-image: url('{{ asset('images/hero-banner.jpg') }}')">
@@ -26,11 +29,11 @@
                             <img class="skill-img" src="{{ asset('images/' . $ti->icon_path) }}" alt="Skill 1">
                         </div>
                         <h5>{{ $ti->name }}</h5>
-                        <div class="description w-100">
+                        <div class="description w-100 text-start">
                             @foreach ($ti['details'] as $ds)
                                 <div class="list">
-                                <span>{{ $ds['name'] }}</span>
-                                <div class="rate">
+                                    <span class="determine-wrap">{{ $ds['name'] }}</span>
+                                    <div class="rate">
                                         @for ($i = 1; $i <= 5; $i++)
                                             @if ($i <= $ds['proficiency'])
                                                 <span class="filled">&#9733;</span>
@@ -38,8 +41,8 @@
                                                 <span class="empty">&#9733;</span>
                                             @endif
                                         @endfor
+                                    </div>
                                 </div>
-                            </div>
                             @endforeach
                         </div>
                     </div>

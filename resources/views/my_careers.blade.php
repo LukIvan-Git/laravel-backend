@@ -2,6 +2,9 @@
 @push('js-header')
     @vite(['resources/js/pages/carrerindex.js'])
 @endpush
+@push('page-title')
+    <title>My Careers</title>
+@endpush
 @section('content')
 <main>
     <section id="career-section" class="py-5">

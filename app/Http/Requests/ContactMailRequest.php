@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\RecaptchaV3;
 
 class ContactMailRequest extends FormRequest
 {
@@ -25,6 +26,7 @@ class ContactMailRequest extends FormRequest
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'message' => 'required|string|max:500',
+            'g-recaptcha-response' => ['required', new ReCaptchaV3('contactme', 0.5)],
         ];
     }
 
