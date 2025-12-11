@@ -11,7 +11,6 @@
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
     <link href="{{asset('css/responsive.css')}}" rel="stylesheet">
-
     <!-- js -->
     <script src="{{asset('js/jquery-3.7.1.min.js')}}"></script>
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
@@ -26,10 +25,11 @@
 
     <script src="https://www.google.com/recaptcha/enterprise.js?render={{env('GOOGLE_RECAPTCHA_SITE_KEY')}}"></script>
 
-    @vite(['resources/css/app.css'])
+
 
     @stack('js-header')
     @stack('css-header')
+    @vite(['resources/css/app.css'])    
 </head>
 <body id="body">
 @include('common.header')

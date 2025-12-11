@@ -18,7 +18,7 @@
                 <img src="{{ asset('images/mylogo1.png') }}" alt="" width="150" class="nav-logo">
             </div>
             <div id="nav-toggle" class="">
-                <i class="bi bi-list"></i>
+                <img class="" src={{ asset('images/list.svg') }}></img>
             </div>
         </div>
     </div>

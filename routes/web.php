@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 use App\Http\Controllers\Frontend\HomepageController;
 use App\Http\Controllers\Frontend\ContactController;
+use App\Http\Controllers\Frontend\MapSearchController;
+
 Route::get('/', function () {
     return redirect()->route('homepage', app()->getLocale());
 });
@@ -30,4 +32,7 @@ Route::prefix('{locale}')->middleware('locale')->group(function () {
     })->name('contact_me');
     
     Route::post('/contact-me', [ContactController::class, 'sendContactMessage'])->name('send_contact_message');
+
+    Route::get('/map-search',[MapSearchController::class, 'index'])->name('map_search');
+
 });

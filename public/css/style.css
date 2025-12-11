@@ -121,6 +121,16 @@ a:hover{
     height: 100%;
 }
 
+#nav-toggle img {
+    width: 48px;
+    height: 48px;
+    max-height: 100%;
+    color: var(--primary-color);
+    position: absolute;
+    top: 8px;
+    right: 0;
+    cursor: pointer;
+}
 
 .header .nav-links a {
     margin-left: 2rem;

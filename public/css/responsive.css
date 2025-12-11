@@ -45,15 +45,6 @@
 }
 
 
-#nav-toggle {
-    color: var(--primary-color);
-    position: absolute;
-    top: 2px;
-    right: 0;
-    font-size: 3.7rem;
-    cursor: pointer;
-}
-
 .icon-list {
     font-size: 2rem;
     cursor: pointer;

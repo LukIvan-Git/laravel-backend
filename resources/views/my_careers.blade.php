@@ -13,7 +13,6 @@
             <div id="carrer-index">
                 <carrer-index></carrer-index>
             </div>
-    </div>
         </div>
 </main>
 @endsection
