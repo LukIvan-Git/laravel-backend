@@ -1,3 +1,9 @@
 {
-    "your_location": "Your Location : Latitude{lat} & Longtituge {lng}"
+        "your_location": "Your Location : Latitude{lat} & Longtituge {lng}",
+        "random_restaurant": "Random Restaurant <=200m",
+        "where_am_i":"Where am I",
+        "pin_my_self":"Pin Myself",
+        "next_step": "Next Step",
+        "back_step":"Back Step",
+        "search":"Search"
 }

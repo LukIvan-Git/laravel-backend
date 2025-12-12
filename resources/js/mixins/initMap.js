@@ -11,7 +11,7 @@ class MapService {
      * @param {HTMLElement|string} mapElementOrId - DOM element or id of the element
      * @param {google.maps.MapOptions} options
      */
-    constructor(mapElementOrId, options = {}) {
+    constructor(mapElementOrId,locale = "en",options = {}) {
         this.mapEl =
             typeof mapElementOrId === "string"
                 ? document.getElementById(mapElementOrId)
@@ -22,15 +22,14 @@ class MapService {
     }
 
     /** Initialize the Google Maps API and create the map instance. */
-    async init({ apiKey = import.meta.env.VITE_GOOGLE_MAP_KEY, version = "weekly" } = {}) {
+    async init({ apiKey = import.meta.env.VITE_GOOGLE_MAP_KEY, version = "beta" } = {}) {
         if (!this.mapEl) {
             throw new Error("Map element not found. Pass an element or valid element id.");
         }
 
-        setOptions({ key: apiKey, v: version });
+        setOptions({ key: apiKey, v: version, language: locale });
 
         const { Map, InfoWindow } = await importLibrary("maps");
-        const { AdvancedMarkerElement } = await importLibrary("marker");
         this.map = new Map(this.mapEl, this.options);
         this.infoWindow = new InfoWindow();
         return this.map;
@@ -88,7 +87,7 @@ class MapService {
         this.map.addListener("click", async (e) => {
             const latLng = { lat: e.latLng.lat(), lng: e.latLng.lng() };
             await this.setMarker(latLng, 'Clicked location');
-        });
+        }, { once: true });
     }
 
     async searchNearBy(position){
@@ -100,21 +99,25 @@ class MapService {
             // required parameters
             fields: [
                 'displayName',
-                'location',
+                'formattedAddress',
                 'googleMapsURI',
+                'rating',
+                'priceRange'
             ],
             locationRestriction: {
                 center: position,
                 radius: radius,
             },
+            rankPreference : SearchNearbyRankPreference.distance,
             includedPrimaryTypes: ['restaurant'],
             maxResultCount: 10,
         };
 
         const { places } = await Place.searchNearby(request);
         if (places.length) {
-            console.log(places);
             return places;
+        }else{
+            return [];
         }
     }
 }

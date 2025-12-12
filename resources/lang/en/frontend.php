@@ -33,4 +33,5 @@ return [
     'error_sending_message'=>'Error sending message. Please try again later.',
     'message_sent_successfully'=>'Message sent successfully!',
     'loading'=>'Loading...',
+    'map_search'=> 'Map Search'
 ];

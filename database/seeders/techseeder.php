@@ -36,7 +36,7 @@ class techseeder extends Seeder
 
             TechStackItem::create([
                 'name'=>'Vue.js',
-                'icon_path'=>'vue.png',
+                'icon_path'=>'vue.jpg',
                 'details'=>[
                     [
                         'name'=>'Vue 2',

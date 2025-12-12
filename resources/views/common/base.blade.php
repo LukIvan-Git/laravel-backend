@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" lang="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/x-icon" href="{{asset('images/favicon.ico')}}">
+    <link rel="icon" type="image/x-icon" href="{{asset('images/fav.png')}}">
     <meta name="keywords" content="Resume CV Portfolio">
     <meta name="description" content="Resume CV Portfolio">
     @stack('page-title')
@@ -25,7 +25,9 @@
 
     <script src="https://www.google.com/recaptcha/enterprise.js?render={{env('GOOGLE_RECAPTCHA_SITE_KEY')}}"></script>
 
-
+    <script>
+        window.locale = @json(app()->getLocale());
+    </script>
 
     @stack('js-header')
     @stack('css-header')
