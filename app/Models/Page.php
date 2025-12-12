@@ -12,6 +12,7 @@ class Page extends Model
         'title',
         'route',
         'data',
+        'order'
     ];
 
     protected $casts = [
@@ -24,17 +25,12 @@ class Page extends Model
         return json_encode($value, JSON_UNESCAPED_UNICODE);
     }
 
-    /**
-     * 获取翻译后的 title
-     */
     public function getTitleAttribute()
     {
         return $this->getTranslation('title');
     }
     
-    /**
-     * 获取翻译后的 data
-     */
+
     public function getTranslatedDataAttribute()
     {
         $locale = app()->getLocale();
@@ -49,9 +45,7 @@ class Page extends Model
         return $this->translateNestedArray($data, $locale, $fallback);
     }
     
-    /**
-     * 获取单个字段的翻译
-     */
+
     public function getTranslation($key, $locale = null)
     {
         $locale = $locale ?? app()->getLocale();
@@ -74,9 +68,6 @@ class Page extends Model
         return $value;
     }
     
-    /**
-     * 获取特定语言的 data 内容
-     */
     public function getDataByLocale($locale = null)
     {
         $locale = $locale ?? app()->getLocale();
@@ -91,16 +82,13 @@ class Page extends Model
         return $this->translateNestedArray($data, $locale, $fallback);
     }
     
-    /**
-     * 递归翻译嵌套数组（辅助方法）
-     */
+
     protected function translateNestedArray($array, $locale, $fallback)
     {
         $result = [];
         
         foreach ($array as $key => $value) {
             if (is_array($value)) {
-                // 检查是否是多语言数组（包含语言代码键名）
                 if (isset($value[$locale]) || isset($value[$fallback]) || 
                     array_key_exists('en', $value) || 
                     array_key_exists('zh_hk', $value)) {

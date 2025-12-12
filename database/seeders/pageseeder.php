@@ -28,7 +28,8 @@ class pageseeder extends Seeder
                             'en'=>'This is Web developer Luk Chung Yin\'s website<br>You can know about me from below!',
                             'zh_hk'=>'這是網頁開發者陸頌賢的網站<br>你可以從下面了解我！'
                         ]
-                    ]
+                        ],
+                        'order'=>1,
                 ]);
                 
                 Page::create([
@@ -43,7 +44,8 @@ class pageseeder extends Seeder
                             'en'=>'',
                             'zh_hk'=>''
                         ]
-                    ]
+                        ],
+                        'order'=>2,
                 ]);
 
                 Page::create([
@@ -58,7 +60,24 @@ class pageseeder extends Seeder
                             'en'=>'',
                             'zh_hk'=>''
                         ]
-                    ]
+                        ],
+                     'order'=>3,
+                ]);
+
+                Page::create([
+                    'slug'=>'map-search',
+                    'title'=>[
+                        'en'=>'Map Search',
+                        'zh_hk'=>'地圖搜尋'
+                    ],
+                    'route'=>'map_search',
+                    'data'=>[
+                        'content'=>[
+                            'en'=>'',
+                            'zh_hk'=>''
+                        ]
+                        ],
+                     'order'=>4,
                 ]);
 
             }catch(\Exception $e){

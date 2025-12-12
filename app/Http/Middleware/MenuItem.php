@@ -19,7 +19,7 @@ class MenuItem
     public function handle(Request $request, Closure $next): Response
     {
 
-        $pages = Page::all();
+        $pages = Page::orderBy('order')->get();
         $items = [];
         foreach ($pages as $page) {
             $items[] = [

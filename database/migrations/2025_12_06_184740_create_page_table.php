@@ -17,6 +17,7 @@ return new class extends Migration
             $table->json('title');
             $table->string('route');
             $table->json('data');
+            $table->integer('order');
             $table->timestamps();
         });
     }

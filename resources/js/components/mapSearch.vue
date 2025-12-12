@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="map-card">
-            <div class="row">
+            <div class="row" v-show="step==1">
                 <div class="col-12">
                     {{$t('random_restaurant')}}
                 </div>
@@ -19,8 +19,22 @@
                     <div id="map"></div>
                 </div>
             </div>
-        </div>
+            <button type="button" v-if="markerPos&&step==1" @click="nextStep">Next Step</button>
+            <div class="row" v-show="step==2">
+                <div  class="col-12">
+                    <div class="step2-box">
+                        <strong>Step 2:</strong> Marker location detected.<br>
+                        Lat: {{ markerLat }}, Lng: {{ markerLng }}
+                        <!-- Add your step 2 logic/UI here -->
+                        <button type="button" @click="search">Search</button>
 
+                    </div>
+                </div>
+                <div class="col-12">
+                    <button type="button" v-if="step>1" @click="backStep">Back Step</button>
+                </div>
+            </div>
+        </div>
     </div>
 
 
@@ -69,6 +83,19 @@ async function getUserLocation () {
     }
 };
 
+
+const step = ref(1);
+
+function nextStep() {
+  step.value++;
+}
+function backStep() {
+  step.value--;
+}
+
+async function search(){
+    const response = await mapSvc.value.searchNearBy(markerPos.value);
+}
 </script>
 
 <style>

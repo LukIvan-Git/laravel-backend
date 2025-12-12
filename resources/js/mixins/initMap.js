@@ -91,7 +91,32 @@ class MapService {
         });
     }
 
+    async searchNearBy(position){
+        const { Place, SearchNearbyRankPreference } = await importLibrary('places');
 
+        const radius = 200;
+
+        const request = {
+            // required parameters
+            fields: [
+                'displayName',
+                'location',
+                'googleMapsURI',
+            ],
+            locationRestriction: {
+                center: position,
+                radius: radius,
+            },
+            includedPrimaryTypes: ['restaurant'],
+            maxResultCount: 10,
+        };
+
+        const { places } = await Place.searchNearby(request);
+        if (places.length) {
+            console.log(places);
+            return places;
+        }
+    }
 }
 
 export default MapService;
