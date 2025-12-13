@@ -64,7 +64,7 @@
         </div>
 </main>
 <script>
-    grecaptcha.ready(function() {
+    grecaptcha.enterprise.ready(function() {
         document.getElementById('contactform').addEventListener("submit", function(event) {
             event.preventDefault();
             var form = this;
