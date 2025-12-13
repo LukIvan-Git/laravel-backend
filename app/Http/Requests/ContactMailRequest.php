@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Rules\RecaptchaV3;
+use App\Rules\ReCaptchaV3;
 
 class ContactMailRequest extends FormRequest
 {
