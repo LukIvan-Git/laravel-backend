@@ -64,6 +64,18 @@
         </div>
 </main>
 <script>
+    
+    $('#btn-wrapper').click(function (e) {
+        e.preventDefault();
+        let btn = $(this).children('#submit-btn');
+        let target = btn.closest('form');
+        btn.prop('disabled', true);
+        btn.addClass('loading');
+        $('#send-icon').addClass('loading').hide();
+        $('#send-check-icon').addClass('loading').show();
+        target.trigger('submit');
+    });
+    
      $('#contactUsForm').on("submit", function(event) {
             event.preventDefault();
             var form = this;
