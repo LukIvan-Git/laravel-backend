@@ -64,10 +64,15 @@
         </div>
 </main>
 <script>
-    grecaptcha.enterprise.ready(async() => {
-        grecaptcha.enterprise.execute('{{ env("GOOGLE_RECAPTCHA_SITE_KEY") }}', { action: 'contactme' }).then(function(token) {
-            document.getElementById('contact-me-recaptcha-token').value = token;
-        });
+    grecaptcha.ready(function() {
+        document.getElementById('contactform').addEventListener("submit", function(event) {
+            event.preventDefault();
+            var form = this;
+            grecaptcha.enterprise.execute('{{ env("GOOGLE_RECAPTCHA_SITE_KEY") }}', { action: 'contactme' }).then(function(token) {
+                document.getElementById('contact-me-recaptcha-token').value = token;
+                form.submit();
+            });
+            }, false);
     });
 </script>
 @endsection
