@@ -26,13 +26,15 @@ class ReCaptchaV3 implements ValidationRule
                 'secret' => env('GOOGLE_RECAPTCHA_SECRET_KEY'),
                 'response' => $value,
             ]);
-        }
-        
-        $recaptcha = Http::withoutVerifying()->asForm()
+        }else{
+            $recaptcha = Http::withoutVerifying()->asForm()
             ->post(env('GOOGLE_RECAPTCHA_URL'), [
                 'secret' => env('GOOGLE_RECAPTCHA_SECRET_KEY'),
                 'response' => $value,
             ]);
+        }
+        
+        
 
         $recaptcha = $recaptcha->object();
         if ($recaptcha->success == false) {
