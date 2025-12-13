@@ -42,7 +42,7 @@
                                 <label  id="send-check-icon" class="custom-label for-btn">
                                     <i class="bi bi-send-check"></i>
                                 </label>
-                                <button id="submit-btn" class="custom-button">@lang('frontend.send_message')</button>   
+                                <button id="submit-btn" type="button" class="custom-button">@lang('frontend.send_message')</button>   
                             </div>
                         </div>
                     </form>
@@ -69,7 +69,7 @@
             var form = this;
             grecaptcha.enterprise.ready(function() {
                 grecaptcha.enterprise.execute('{{ env("GOOGLE_RECAPTCHA_SITE_KEY") }}', { action: 'contactme' }).then(function(token) {
-                document.getElementById('contact-me-recaptcha-token').value = token;
+                $('#contact-me-recaptcha-token').value = token;
                 form.submit();
                 });
             });
