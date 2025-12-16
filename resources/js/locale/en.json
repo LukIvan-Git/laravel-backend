@@ -5,5 +5,11 @@
         "pin_my_self":"Pin Myself",
         "next_step": "Next Step",
         "back_step":"Back Step",
-        "search":"Search"
+        "search":"Search",
+        "random_restaurant_note":"This will search 10 restaurant within 200meters.\n 'Where am I' function depends on GPS accuracy, recommend using 'Pin Myself'",
+        "address":"Address",
+        "url":"Map Url",
+        "rating":"Rating",
+        "price":"Price",
+        "open_in_maps":"Open in Maps"
 }

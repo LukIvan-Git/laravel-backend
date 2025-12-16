@@ -7,9 +7,9 @@
 @endpush
 @section('content')
 <main>
-    <section id="career-section" class="py-5">
+    <section id="career-section" class="pt-lg-4 pt-5 pb-3">
         <div class="container"> 
-            <h1 class="mb-2 mb-lg-4">@lang('frontend.my_career')</h1>
+            <h1 class="mb-3 mb-lg-4">@lang('frontend.my_career')</h1>
             <div id="carrer-index">
                 <carrer-index></carrer-index>
             </div>

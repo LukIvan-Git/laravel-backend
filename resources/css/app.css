@@ -248,6 +248,10 @@
     font-weight: bold;
     color: var(--primary-color);
 }
+.title-note {
+  font-size: 1rem;
+  color: #495057;
+}
 
 .btn-row {
     gap: 12px;

@@ -7,9 +7,9 @@
 @endpush
 @section('content')
 <main>
-    <section id="map-section" class="py-5">
+    <section id="map-section" class="pt-lg-4 pt-5 pb-3">
         <div class="container"> 
-            <h1 class="mb-2 mb-lg-4">@lang('frontend.map_search')</h1>
+            <h1 class="mb-3 mb-lg-4">@lang('frontend.map_search')</h1>
             <div id="map-search">
                 <map-search></map-search>
             </div>

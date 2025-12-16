@@ -5,6 +5,9 @@
                 <div class="col-12 title-row">
                     <span class="main-title">{{ $t('random_restaurant') }}</span>
                 </div>
+                <div class="col-12 title-row">
+                    <span class="title-note">{{ $t('random_restaurant_note') }}</span>
+                </div>
                 <div class="col-12 btn-row d-flex justify-content-center">
                     <button type="button" class="main-btn" @click="getUserLocation">
                         <span class="search-icon">📍</span> {{ $t('where_am_i') }}
@@ -15,7 +18,7 @@
                 </div>
                 <div class="col-12 text-center mb-3">
                     <span v-if="markerPos" class="marker-label">Lat: <b>{{ markerLat }}</b>, Lng: <b>{{ markerLng
-                    }}</b></span>
+                            }}</b></span>
                     <span v-else class="marker-label">Lat/Lng: --</span>
                 </div>
                 <div class="col-12 mb-3">
@@ -23,7 +26,7 @@
                 </div>
                 <div class="col-12 text-right" v-if="markerPos && step == 1">
                     <button type="button" class="main-btn next-btn my-3" @click="nextStep">{{ $t('next_step')
-                        }}</button>
+                    }}</button>
                 </div>
             </div>
             <div class="row" v-show="step == 2">
@@ -47,7 +50,8 @@
                     <div v-if="searchResultShow">
                         <div class="search-result-box">
                             <div v-if="resultArray.length" class="result-list-box">
-                                <div v-for="(item, idx) in resultArray" :key="idx" class="result-card position-relative">
+                                <div v-for="(item, idx) in resultArray" :key="idx"
+                                    class="result-card position-relative">
                                     <div class="result-title">{{ item.displayName || $t('no_name') }}</div>
                                     <div class="result-field">
                                         <div class="result-label">{{ $t('address') }}</div>
@@ -56,24 +60,25 @@
                                     <div class="result-field ">
                                         <div class="result-label">{{ $t('rating') }}</div>
                                         <div class="result-value position-relative">
-                                            {{ item.rating ?? '-' }}<span class="filled">&#9733;</span>
+                                            {{ item.rating ?? '- ' }}<span class="filled">&#9733;</span>
                                         </div>
                                     </div>
                                     <div class="result-field">
                                         <div class="result-label">{{ $t('price') }}</div>
                                         <div class="result-value">
-                                            <span v-if="item.price">{{ item.price}}</span>
+                                            <span v-if="item.price">{{ item.price }}</span>
                                         </div>
                                     </div>
                                     <div class="result-field">
                                         <div class="result-label">{{ $t('url') }}</div>
                                         <div class="result-value">
-                                            <a v-if="item.url" :href="item.url" target="_blank"
-                                                class="result-link">{{ $t('open_in_maps') }}</a>
+                                            <a v-if="item.url" :href="item.url" target="_blank" class="result-link">{{
+                                                $t('open_in_maps') }}</a>
                                             <span v-else>-</span>
                                         </div>
                                     </div>
-                                    <span v-if="item.highest" class="translate-middle badge rounded-pill bg-info text-dark best-badge">Best</span>
+                                    <span v-if="item.highest"
+                                        class="translate-middle badge rounded-pill bg-info text-dark best-badge">Best</span>
                                 </div>
                             </div>
                             <div v-else class="no-result">{{ $t('no_result_found') }}</div>
@@ -82,7 +87,7 @@
                 </div>
                 <div class="col-12 text-left mt-3">
                     <button type="button" class="main-btn outline" v-if="step > 1" @click="backStep">{{ $t('back_step')
-                        }}</button>
+                    }}</button>
                 </div>
             </div>
         </div>
@@ -94,7 +99,7 @@
 <script setup>
 import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
-import { onMounted, ref, shallowRef, computed } from 'vue';
+import { onMounted, ref, shallowRef, computed, watch } from 'vue';
 import MapService from '../mixins/initMap';
 const mapSvc = shallowRef(null);
 const markerPos = ref(null);
@@ -161,6 +166,16 @@ function backStep() {
     step.value--;
 }
 
+
+//step2
+watch(markerPos, (newValue, oldValue) => {
+    if (newValue != oldValue) {
+        resultArray.value = [];
+        searchResultShow.value = false;
+        searchLoading.value = false;
+    }
+});
+
 const searchResultShow = ref(false);
 const searchLoading = ref(false);
 const resultArray = ref([]);
@@ -170,24 +185,22 @@ async function search() {
         const response = await mapSvc.value.searchNearBy(markerPos.value);
         searchResultShow.value = true;
         if (response != []) {
-            // 計算最高評分
-    const ratings = response.map(p => p.rating || 0).filter(r => !isNaN(r));
-    const maxRating = ratings.length > 0 ? Math.max(...ratings) : 0;
-    
-    // 創建新的 resultArray
-    resultArray.value = response.map(p => {
-        // 提取需要的基本屬性
-        const newObj = {
-            displayName: p.displayName,
-            address: p.formattedAddress,
-            price: (p.priceRange?.startPrice?.currencyCode)+': '+(p.priceRange?.startPrice ?? '') +' - '+(p.priceRange?.endPrice ?? '')  ,
-            rating: p.rating,
-            highest: p.rating === maxRating,
-            url: p.googleMapsURI
-        };
-        
-        return newObj;
-    });
+
+            const ratings = response.map(p => p.rating || 0).filter(r => !isNaN(r));
+            const maxRating = ratings.length > 0 ? Math.max(...ratings) : 0;
+
+            resultArray.value = response.map(p => {
+                const newObj = {
+                    displayName: p.displayName,
+                    address: p.formattedAddress,
+                    price: p.priceRange ? (p.priceRange?.startPrice?.currencyCode) + ': ' + (p.priceRange?.startPrice ?? '') + ' - ' + (p.priceRange?.endPrice ?? '') : '/',
+                    rating: p.rating ?? null,
+                    highest: p.rating === maxRating,
+                    url: p.googleMapsURI
+                };
+
+                return newObj;
+            });
         }
         searchLoading.value = false;
     } catch (e) {
@@ -200,6 +213,4 @@ async function search() {
 }
 </script>
 
-<style>
-
-</style>
+<style></style>
