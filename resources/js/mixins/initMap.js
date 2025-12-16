@@ -67,7 +67,7 @@ class MapService {
      * @param {PositionOptions} [geolocationOptions]
      * @returns {Promise<{lat:number,lng:number}>}
      */
-    getCurrentLocation(geolocationOptions = { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }) {
+    getCurrentLocation(geolocationOptions = { enableHighAccuracy: true, timeout: 20000, maximumAge: 0 }) {
         return new Promise((resolve, reject) => {
             if (!navigator || !navigator.geolocation) {
                 return reject(new Error("Geolocation not supported by this browser."));

@@ -16,9 +16,17 @@
                         <span class="search-icon">📌</span> {{ $t('pin_my_self') }}
                     </button>
                 </div>
-                <div class="col-12 text-center mb-3">
-                    <span v-if="markerPos" class="marker-label">Lat: <b>{{ markerLat }}</b>, Lng: <b>{{ markerLng
-                            }}</b></span>
+                <div class="col-12 text-center mb-3 d-inline-block">
+                    <div class="search-result-wait-box" v-if="markerPosLoading">
+                        <div class="d-flex justify-content-center">
+                            <div class="spinner-border" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                    <span v-if="mapErr" class="">{{ mapErr.message }} {{ $t('try_again') }}</span>
+                    <span v-if="markerPos" class="marker-label">Lat: <b>{{ markerLat }}</b>, Lng: <b>{{ markerLng }}</b>
+                    </span>
                     <span v-else class="marker-label">Lat/Lng: --</span>
                 </div>
                 <div class="col-12 mb-3">
@@ -103,6 +111,7 @@ import { onMounted, ref, shallowRef, computed, watch } from 'vue';
 import MapService from '../mixins/initMap';
 const mapSvc = shallowRef(null);
 const markerPos = ref(null);
+const markerPosLoading = ref(false);
 const markerLat = computed(() => markerPos.value ? markerPos.value.lat : '--');
 const markerLng = computed(() => markerPos.value ? markerPos.value.lng : '--');
 
@@ -142,17 +151,30 @@ async function pinself() {
     await mapSvc.value.blindClickEvent();
 }
 
+
+function clearErr(){
+    mapErr.value = null;
+};
+
+const mapErr = ref('');
 async function getUserLocation() {
     if (!mapSvc.value) {
         console.warn('MapService not initialized');
         return;
     }
-
+    
     try {
+        markerPosLoading.value = true;
+        clearErr();
         const pos = await mapSvc.value.getCurrentLocation();
         await mapSvc.value.setMarker(pos, 'Location found');
+        markerPosLoading.value = false;
     } catch (err) {
+        markerPosLoading.value = false;
+        mapErr.value = err;
         console.error('Could not get location', err);
+    }finally{
+        markerPosLoading.value = false;
     }
 };
 

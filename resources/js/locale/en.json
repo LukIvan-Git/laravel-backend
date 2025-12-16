@@ -11,5 +11,6 @@
         "url":"Map Url",
         "rating":"Rating",
         "price":"Price",
-        "open_in_maps":"Open in Maps"
+        "open_in_maps":"Open in Maps",
+        "try_again":"Please Try Again"
 }
